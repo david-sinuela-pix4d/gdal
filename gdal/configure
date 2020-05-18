@@ -38030,7 +38030,7 @@ else
 fi
 
         if test "$HAVE_RASTERLITE2" = "yes"; then
-            LIBS="$LIBS -lrasterlite2 -lsqlite3"
+            LIBS="-lrasterlite2 $LIBS"
         else
             as_fn_error $? "did not find rl2_load_raw_tiles_into_dbms" "$LINENO" 5
         fi
@@ -38087,7 +38087,7 @@ fi
 
         if test "$HAVE_RASTERLITE2" = "yes"; then
             RASTERLITE2_CFLAGS="-I$with_rasterlite2/include"
-            LIBS="$LIBS -L$with_rasterlite2/lib -lrasterlite2 -lsqlite3"
+            LIBS="-L$with_rasterlite2/lib -lrasterlite2 $LIBS"
         else
             as_fn_error $? "did not find rl2_load_raw_tiles_into_dbms" "$LINENO" 5
         fi
