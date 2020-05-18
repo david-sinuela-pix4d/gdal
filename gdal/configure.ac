@@ -4300,7 +4300,7 @@ elif test "$with_rasterlite2" = "yes"; then
     if test "$ac_cv_header_rasterlite2_rasterlite2_h" = "yes"; then
         AC_CHECK_LIB(rasterlite2,rl2_load_raw_tiles_into_dbms,HAVE_RASTERLITE2=yes,HAVE_RASTERLITE2=no,)
         if test "$HAVE_RASTERLITE2" = "yes"; then
-            LIBS="$LIBS -lrasterlite2 -lsqlite3"
+            LIBS="-lrasterlite2 $LIBS"
         else
             AC_MSG_ERROR([did not find rl2_load_raw_tiles_into_dbms])
         fi
@@ -4314,7 +4314,7 @@ else
         AC_CHECK_LIB(rasterlite2,rl2_load_raw_tiles_into_dbms,HAVE_RASTERLITE2=yes,HAVE_RASTERLITE2=no,-L$with_rasterlite2/lib)
         if test "$HAVE_RASTERLITE2" = "yes"; then
             RASTERLITE2_CFLAGS="-I$with_rasterlite2/include"
-            LIBS="$LIBS -L$with_rasterlite2/lib -lrasterlite2 -lsqlite3"
+            LIBS="-L$with_rasterlite2/lib -lrasterlite2 $LIBS"
         else
             AC_MSG_ERROR([did not find rl2_load_raw_tiles_into_dbms])
         fi
